@@ -1,0 +1,11 @@
+{
+    "title": "Hilfe finden",
+    "subtitle": "sd",
+    "content": "- Rufen Sie sofort die 112 an<br>- Reden Sie deutlich<br>- Halten Sie die Antworten für die W-Fragen bereit<br><div class='marked'>Wo</div> Befindet sich der Einsatzort",
+    "links": [
+        {"text": "Brand", "target": "fire"}
+    ],
+    "sources":[
+        "google.com"
+    ]
+}

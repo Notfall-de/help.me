@@ -1,0 +1,11 @@
+{
+    "title": "Error",
+    "subtitle": "Ein Fehler ist aufgetreten",
+    "content": "Wahrscheinlich ist die Seite die Sie versucht haben zu öffnen nicht verfügbar",
+    "links": [
+        {"text": "Zurück an den Anfang", "target": "start"}
+    ],
+    "sources":[
+        "google.com"
+    ]
+}

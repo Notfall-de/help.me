@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            padding: 0px;
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .main-container{
+            box-shadow: 6px 6px 30px #AEAEAE;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            width: calc(100vw - 40px);
+            margin: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        #title{
+            color: #C54E4E;
+            font-size: 50px;
+            font-weight: 800;
+        }
+        #sub-title{
+            color: #363636;
+            font-size: 20px;
+            font-weight: 800;
+        }
+        .link-background{
+            background-size: contain;
+            background-repeat: round;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 5px;
+            width: min-content;
+            cursor: pointer;
+        }
+        #link{
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        #links{
+            overflow-y: unset;
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            padding-top: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div id="title"><div>Sprache</div></div>
+        <div id="sub-title"><div>Bitte wählen Sie eine passende Sprache</div></div>
+        <div style="display: flex; justify-content: center;">
+            <div id="links">
+                <div class="link-background" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1920px-Flag_of_Germany.svg.png)"><a id="link">Deutsch</a></div>
+                <div class="link-background" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1920px-Flag_of_Germany.svg.png)"><a id="link">Deutsch</a></div>
+                <div class="link-background" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1920px-Flag_of_Germany.svg.png)"><a id="link">Deutsch</a></div>
+                <div class="link-background" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1920px-Flag_of_Germany.svg.png)"><a id="link">Deutsch</a></div>
+                <div class="link-background" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1920px-Flag_of_Germany.svg.png)"><a id="link">Deutsch</a></div>
+                <div class="link-background" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/1920px-Flag_of_Germany.svg.png)"><a id="link">Deutsch</a></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
