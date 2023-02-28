@@ -8,12 +8,22 @@ app = Flask(__name__)
 
 @app.route('/<target>', methods=["GET"])
 def site(target):
-    return Response(open("static/site.html", encoding="UTF-8").read(), status=200, mimetype="text/html; charset=utf-8")
+    template = request.args.get('template', default="instruction", type=str)
+
+    if f"{template}.html" in os.listdir("./static"):
+        return Response(open(f"static/{template}.html", encoding="UTF-8").read(), status=200, mimetype="text/html; charset=utf-8")
+    else:
+        return Response(json.dumps({"code": 404, "msg": "this template does not exist"}), status=410, mimetype="application/json")
 
 
 @app.errorhandler(404)
 def page_not_found(_):
     return redirect("/start")
+
+
+@app.route('/favicon.ico', methods=["GET"])
+def favicon():
+    return Response(status=404, mimetype="image/x-icon")
 
 
 @app.route('/api/site/<target>', methods=["GET"])

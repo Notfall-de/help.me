@@ -9,11 +9,12 @@
 <body>
     <style>
         body{
+            overflow: hidden;
             padding: 0px;
             margin: 0px;
             font-family: Arial, Helvetica, sans-serif;
         }
-        
+
         #bigImageContainer{
             background-color: rgba(0, 0, 0, 0.9);
             flex-direction: column;
@@ -31,7 +32,7 @@
             width: auto;
             object-fit: contain;
         }
-        
+
         .card{
             box-shadow: 6px 6px 30px #AEAEAE;
             background-color: white;
@@ -95,20 +96,20 @@
         <img draggable="false" id="bigImage" src="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg">
         <div id="LinkButtons">
             <a class="linkButton" onclick="hideBigImage()"><div>OK</div></a>
-            <a class="linkButton" href="/original" target="_blank"><div>Original</div></a>
+            <a id="originalImageOriginal" class="linkButton" href="/original" target="_blank"><div>Original</div></a>
         </div>
     </div>
     <div class="card">
         <div id="cardTitle">Title</div>
         <div id="cardSubTitle">Sub Title</div>
-        <div id="imageButtonContainer"><a id="cardImageButton" onclick="showBigImage()"><img draggable="false" id="bigImage" src="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg"></a></div>
+        <div id="imageButtonContainer"><a id="cardImageButton" onclick="showBigImage()"><img draggable="false" id="Image" src="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg"></a></div>
         <div id="cardBody">Body</div>
-        <div id="LinkButtons">
+        <div id="cardLinkButtons">
             <a href="" class="linkButton">asd</a>
         </div>
     </div>
     <script>
-        const bigImage = document.getElementById("bigImageContainer");
+        const bigImageContainer = document.getElementById("bigImageContainer");
         const cardImageButton = document.getElementById("cardImageButton");
 
         function reportWindowSize() {
@@ -117,11 +118,53 @@
         window.onresize = reportWindowSize;
 
         function hideBigImage(){
-            bigImage.style = "display: none;"
+            bigImageContainer.style = "display: none;"
         }
         function showBigImage(){
-            bigImage.style = "display: flex;"
+            bigImageContainer.style = "display: flex;"
         }
+        
+
+        const bigImage = document.getElementById("bigImage");
+        const path = location.pathname.split('/');
+        const image = document.getElementById("Image");
+        const pageTitle = document.getElementById("cardTitle");
+        const pageSubTitle = document.getElementById("cardSubTitle");
+        const originalImageOriginal = document.getElementById("originalImageOriginal");
+        const pageContent = document.getElementById("cardBody");
+        const pageLinks = document.getElementById("cardLinkButtons");
+
+
+        function rebuild_page(target){
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", `/api/site/${target}`);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let data = JSON.parse(xhr.responseText);
+                    
+                    pageTitle.textContent = data.title;
+                    pageSubTitle.textContent = data.subtitle; 
+                    pageContent.innerHTML = data.content;
+                    originalImageOriginal.href = data.image;
+                    bigImage.src = data.image;
+                    image.src = data.image;
+
+                    pageLinks.innerText = "";
+                    for (const obj of data.links) {
+                        let newButton = document.createElement("a");
+                        newButton.classList.add("linkButton");
+                        newButton.innerText = obj.text
+                        newButton.href = obj.target
+                        pageLinks.appendChild(newButton);
+                    }
+                }if(xhr.readyState >= 4 && xhr.status != 200){
+                    window.location.replace("/start");
+                }
+            };
+            xhr.send();
+        }
+
+        rebuild_page(path[1])
     </script>
 </body>
 </html>
