@@ -4,13 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="helpmd.css">
+</head>
+<body>
     <style>
         body{
             padding: 0px;
             margin: 0px;
             font-family: Arial, Helvetica, sans-serif;
         }
-        .main-container{
+        
+        #bigImageContainer{
+            background-color: rgba(0, 0, 0, 0.9);
+            flex-direction: column;
+            position: absolute;
+            text-align: center;
+            top: 0px;
+            left: 0px;
+            width: 100vw;
+            height: 100vh;
+        }
+        #bigImageContainer>#bigImage{
+            height: 100%;
+            margin-top: 15px;
+            image-rendering: optimizeQuality;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .card{
             box-shadow: 6px 6px 30px #AEAEAE;
             background-color: white;
             display: flex;
@@ -21,17 +43,29 @@
             border-radius: 10px;
             text-align: center;
         }
-        #title{
+        .card>#cardTitle{
             color: #C54E4E;
             font-size: 50px;
             font-weight: 800;
         }
-        #sub-title{
+        .card>#cardSubTitle{
             color: #363636;
             font-size: 20px;
             font-weight: 800;
         }
-        #content{
+        .card>#imageButtonContainer>#cardImageButton{
+            height: 100%;
+            cursor: pointer;
+        }
+        .card>#imageButtonContainer>#cardImageButton>img{
+            height: 100%;
+        }
+        .card>#imageButtonContainer{
+            height: 40%;
+            display: flex;
+            justify-content: center;
+        }
+        .card>#cardBody{
             color: #363636;
             height: auto;
             flex-direction: column;
@@ -43,56 +77,7 @@
             padding-top: 2%;
             text-align: left;
         }
-        .main-container>#imageLink>#image{
-            max-height: 100%;
-            image-rendering: pixelated;
-            width: auto;
-            object-fit: contain;
-        }
-        .main-container>#imageLink{
-            height: auto;
-            cursor: pointer;
-            max-height: 40%;
-            image-rendering: pixelated;
-        }
-        #links>.link{
-            background-color: #3D7DDF;
-            text-decoration: none;
-            width: calc(100% - 30px);
-            font-size: 25px;
-            display: block;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            margin: 15px;
-            margin-top: 15px;
-            color: white;
-            cursor: pointer;
-        }
-        .marked{
-            color: #C54E4E;
-            font-size: 25px;
-            font-weight: 900;
-            display: inline-block;
-        }
-        .big-image{
-            background-color: rgba(0, 0, 0, 0.9);
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 100vw;
-            height: 100vh;
-        }
-        #big-image>#image{
-            height: 100%;
-            margin-top: 15px;
-            image-rendering: optimizeQuality;
-            width: auto;
-            object-fit: contain;
-        }
-        .big-image>.link{
-            text-align: center;
+        .linkButton{
             background-color: #3D7DDF;
             text-decoration: none;
             width: calc(100% - 30px);
@@ -106,25 +91,30 @@
             cursor: pointer;
         }
     </style>
-</head>
-<body>
-    <div id="big-image" class="big-image">
-        <img id="image" src="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg">
-        <a class="link" onclick="hideBigImage()"><div>OK</div></a>
-        <a class="link" href="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg" target="_blank"><div>Original</div></a>
+    <div id="bigImageContainer" style="display: none;">
+        <img draggable="false" id="bigImage" src="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg">
+        <div id="LinkButtons">
+            <a class="linkButton" onclick="hideBigImage()"><div>OK</div></a>
+            <a class="linkButton" href="/original" target="_blank"><div>Original</div></a>
+        </div>
     </div>
-    <div class="main-container">
-        <div id="title"><div>title</div></div>
-        <div id="sub-title"><div>sub title</div></div>
-        <a id="imageLink" onclick="showBigImage()"><img id="image" onclick="showBigImage()" src="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg"></a>
-        <div id="content"><div>content</div></div>
-        <div id="links">
-            <a class="link"><div>link 1</div></a>
-            <a class="link"><div>link 2</div></a>
+    <div class="card">
+        <div id="cardTitle">Title</div>
+        <div id="cardSubTitle">Sub Title</div>
+        <div id="imageButtonContainer"><a id="cardImageButton" onclick="showBigImage()"><img draggable="false" id="bigImage" src="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg"></a></div>
+        <div id="cardBody">Body</div>
+        <div id="LinkButtons">
+            <a href="" class="linkButton">asd</a>
         </div>
     </div>
     <script>
-        const bigImage = document.getElementById("big-image");
+        const bigImage = document.getElementById("bigImageContainer");
+        const cardImageButton = document.getElementById("cardImageButton");
+
+        function reportWindowSize() {
+            cardImageButton.style.width = cardImageButton.children[0].width + "px";
+        }
+        window.onresize = reportWindowSize;
 
         function hideBigImage(){
             bigImage.style = "display: none;"
