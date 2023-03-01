@@ -95,7 +95,7 @@
     <div id="bigImageContainer" style="display: none;">
         <img draggable="false" id="bigImage" src="https://ara-arbeitsschutz.de/media/image/product/69425/lg/erste-hilfe-notfalltafel-gramm-30000013203.jpg">
         <div id="LinkButtons">
-            <a class="linkButton" onclick="hideBigImage()"><div>OK</div></a>
+            <a id="bigPictureConfirmButton" class="linkButton" onclick="hideBigImage()"><div>OK</div></a>
             <a id="originalImageOriginal" class="linkButton" href="/original" target="_blank"><div>Original</div></a>
         </div>
     </div>
@@ -133,11 +133,16 @@
         const originalImageOriginal = document.getElementById("originalImageOriginal");
         const pageContent = document.getElementById("cardBody");
         const pageLinks = document.getElementById("cardLinkButtons");
+        const confirmButton = document.getElementById("bigPictureConfirmButton");
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const lang = urlParams.get('lang')
 
 
         function rebuild_page(target){
             let xhr = new XMLHttpRequest();
-            xhr.open("GET", `/api/site/${target}`);
+            xhr.open("GET", `/api/site/${target}?lang=${lang}`);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     let data = JSON.parse(xhr.responseText);
