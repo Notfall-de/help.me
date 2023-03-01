@@ -1,0 +1,29 @@
+/* style for darkmode */
+@media (prefers-color-scheme: dark) {
+    highlight{
+        color: #e04949;
+    }
+    #cardBody>a:link, #cardBody>a:visited, #cardBody>a:active{
+        color: #3D7DDF;
+    }
+}
+
+/* style for lightmode */
+@media (prefers-color-scheme: light) {
+    highlight{
+        color: #C54E4E;
+    }
+    #cardBody>a:link, #cardBody>a:visited, #cardBody>a:active{
+        color: #3D7DDF;
+    }
+}
+
+/* general style */
+highlight{
+    font-weight: 700;
+}
+#cardBody>a:link, #cardBody>a:visited, #cardBody>a:active{
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}

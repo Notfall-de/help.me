@@ -1,0 +1,61 @@
+/* style for darkmode */
+@media (prefers-color-scheme: dark) {
+    .card>#cardBody{
+        color: #dcdcdc;
+    }
+    #bigImageContainer{
+        background-color: rgba(50, 50, 50, 0.8);
+    }
+}
+
+/* style for lightmode */
+@media (prefers-color-scheme: light) {
+    .card>#cardBody{
+        color: #363636;
+    }
+    #bigImageContainer{
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* general style */
+.card>#cardBody{
+    height: auto;
+    flex-direction: column;
+    font-size: 1.2em;
+    flex: 1;
+    overflow-y: scroll;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 20px;
+    text-align: left;
+}
+.cardImageContainer{
+    margin-top: 10px;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+}
+.cardImageContainer>#cardImageLink{
+    height: 100%;
+    cursor: pointer;
+}
+.cardImageContainer>#cardImageLink>#cardImage{
+    height: 100%;
+}
+#bigImageContainer{
+    flex-direction: column;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+#bigImageContainer>#bigImage{
+    height: 100%;
+    margin-top: 15px;
+    image-rendering: optimizeQuality;
+    width: auto;
+    object-fit: contain;
+}

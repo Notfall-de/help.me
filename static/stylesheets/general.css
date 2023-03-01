@@ -1,0 +1,100 @@
+/* style for darkmode */
+@media (prefers-color-scheme: dark) {
+    body{
+        background-color: #1e1e1e;
+    }
+    .card{
+        background-color: #333333;
+        box-shadow: 6px 6px 30px #252526;
+    }
+    .card>#cardTitle{
+        color: #e04949;
+    }
+    .card>#cardSubtitle{
+        color: #dcdcdc;
+    }
+    .cardButton{
+        background-color: #295699;
+        color: white;
+    }
+    .cardButtonSecondary{
+        border-color: #295699;
+        color: white;
+        background-color: #333333;
+    }
+}
+
+/* style for lightmode */
+@media (prefers-color-scheme: light) {
+    body{
+        background-color: white;
+    }
+    .card{
+        background-color: white;
+        box-shadow: 6px 6px 30px #AEAEAE;
+    }
+    .card>#cardTitle{
+        color: #C54E4E;
+    }
+    .card>#cardSubtitle{
+        color: #363636;
+    }
+    .cardButton{
+        background-color: #3D7DDF;
+        color: white;
+    }
+    .cardButtonSecondary{
+        border-color: #3D7DDF;
+        color: #363636;
+        background-color: white;
+    }
+}
+
+/* general style */
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 40px);
+    width: calc(100vw - 40px);
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+}
+.card>#cardTitle{
+    font-size: 2em;
+    font-weight: 700;
+}
+.card>#cardSubtitle{
+    font-size: 1.3em;
+    font-weight: 600;
+}
+.cardButton{
+    text-decoration: none;
+    width: calc(100% - 30px);
+    font-size: 1.2em;
+    font-weight: 600;
+    display: block;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 15px;
+    cursor: pointer;
+}
+.cardButtonSecondary{
+    text-decoration: none;
+    width: calc(100% - 30px - 8px);
+    font-size: 1.2em;
+    font-weight: 600;
+    display: block;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin: 15px;
+    cursor: pointer;
+    border-width: 4px;
+    border-style: solid;
+}
