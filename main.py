@@ -10,15 +10,15 @@ app = Flask(__name__)
 def site(target):
     template = request.args.get('template', default="instruction", type=str)
 
-    if f"{template}.html" in os.listdir("./static"):
-        return Response(open(f"static/{template}.html", encoding="UTF-8").read(), status=200, mimetype="text/html; charset=utf-8")
+    if f"{template}.html" in os.listdir("./static/templates"):
+        return Response(open(f"static/templates/{template}.html", encoding="UTF-8").read(), status=200, mimetype="text/html; charset=utf-8")
     else:
         return Response(json.dumps({"code": 404, "msg": "this template does not exist"}), status=410, mimetype="application/json")
 
 
 @app.errorhandler(404)
 def page_not_found(_):
-    return redirect("/start")
+    return redirect("/start?template=instruction&lang=de-DE")
 
 
 @app.route('/favicon.ico', methods=["GET"])
@@ -32,10 +32,10 @@ def get_site(target):
     if not lang:
         lang = "de-DE"
     if lang not in os.listdir("./sites") and lang:
-        return Response(json.dumps({"code": 404, "msg": "this language does not exist"}), status=410, mimetype="application/json")
+        return Response(json.dumps({"code": 410, "msg": "this language does not exist"}), status=410, mimetype="application/json")
     else:
         if f"{target}.json" not in os.listdir(f"./sites/{lang}/"):
-            return Response(json.dumps({"code": 404, "msg": "this site does not exist"}), status=410, mimetype="application/json")
+            return Response(json.dumps({"code": 410, "msg": "this site does not exist"}), status=410, mimetype="application/json")
     return Response(open(f"./sites/{lang}/{target}.json", encoding="UTF-8").read(), status=200, mimetype="application/json")
 
 

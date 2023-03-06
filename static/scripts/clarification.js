@@ -26,7 +26,7 @@ newButton.innerHTML = `<i class="bi bi-info"></i> start`;
 cardButtons.appendChild(newButton);
 
 // set card body
-cardBody.innerHTML = "card body <highlight>highlight</highlight> <a href='/hallo'>link</a>";
+cardBody.innerHTML = "card body <highlight>highlight</highlight> <a href='/hallo'>link</a> <sourcelink>asd</sourcelink>";
 
 // set images
 cardImage.src = "https://schlaganfallbegleitung.de/wp-content/uploads/2020/11/stabile-seitenlage-johanniter-1.png"
