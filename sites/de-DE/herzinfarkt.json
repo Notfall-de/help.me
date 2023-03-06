@@ -1,0 +1,9 @@
+{
+    "template": "instruction",
+    "title": "Hilfe finden",
+    "subtitle": "sd",
+    "content": "<sourcelink>https://dzhk.de/aktuelles/news/artikel/uke-personalisierter-algorithmus-hilft-herzinfarkt-schneller-und-sicherer-zu-erkennen/</sourcelink>",
+    "links": [
+        {"text": "Brand", "target": "fire"}
+    ]
+}
